@@ -1,4 +1,4 @@
-CXX=g++ --std=c++20
+CXX=g++ --std=gnu++20
 CXXFLAGS=-Iobjs/ -O3 -Wall -Wextra
 
 APP_NAME=game_of_life
@@ -14,10 +14,10 @@ dirs:
 clean:
 	/bin/rm -rf $(OBJDIR) $(APP_NAME)
 
-OBJS=$(OBJDIR)/main.o
+OBJS=$(OBJDIR)/main.o $(OBJDIR)/game_of_life.o
 
 $(APP_NAME): dirs $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) -lm -lpthread
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) -lpthread
 
 $(OBJDIR)/%.o: %.cpp
 	$(CXX) $< $(CXXFLAGS) -c -o $@
